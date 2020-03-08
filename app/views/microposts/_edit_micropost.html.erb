@@ -1,6 +1,6 @@
-<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#edit-form">EditMicropost</button>
+<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#edit-form-<%= micropost.id %>">EditMicropost</button>
 
-<div id="edit-form" class="collapse mt-2">
+<div id="edit-form-<%= micropost.id %>" class="collapse mt-2">
    <%= form_with(model: micropost, local: true, method: :put) do |f| %>
         <div class="form-group">
             <%= f.text_area :content, class: 'form-control', rows: 5 %>
