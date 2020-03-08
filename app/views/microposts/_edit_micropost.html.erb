@@ -1,9 +1,11 @@
 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#edit-form">EditMicropost</button>
 
-<%= form_with(model: micropost, local: true, id: 'edit-form', class: 'collapse', method: :put) do |f| %>
-    <div class="form-group">
-        <%= f.text_area :content, class: 'form-control', rows: 5 %>
-        <%= f.submit 'Edit', class: 'btn btn-primary btn-block' %>
-    </div>
-<% end %>
-    
+<div id="edit-form" class="collapse mt-2">
+   <%= form_with(model: micropost, local: true, method: :put) do |f| %>
+        <div class="form-group">
+            <%= f.text_area :content, class: 'form-control', rows: 5 %>
+            <%= f.submit 'Edit', class: 'btn btn-primary btn-block' %>
+        </div>
+    <% end %>
+    <%= link_to 'Delete', micropost, method: :delete, data: { confirm: 'You sure?'}, class: 'btn btn-block btn-danger' %> 
+</div>

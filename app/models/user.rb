@@ -16,6 +16,8 @@ class User < ApplicationRecord
     has_many :favorites, dependent: :destroy
     has_many :added_to_favorites, through: :favorites, source: :micropost
     
+    mount_uploader :image, ImageUploader
+    
     
     def follow(other_user)
         unless self == other_user

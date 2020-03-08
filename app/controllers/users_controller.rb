@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers, :likes]
+  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers, :likes, :destroy, :update]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(25)
@@ -45,10 +45,28 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = '退会しました。'
+    redirect_to root_url
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = "プロフィール画像を変更しました。"
+      redirect_to @user
+    else
+      flash.now[:danger] = "プロフィール画像の変更に失敗しました。"
+      render :show
+    end
+  end
+      
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :remove_image)
   end
   
 end

@@ -17,6 +17,7 @@
                             <li class="dropdown-item"><%= link_to 'My Favorites', likes_user_path(current_user) %></li>
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item"><%= link_to 'Logout', logout_path, method: :delete %></li>
+                            <li class="dropdown-item"><%= link_to 'Withdraw', current_user, method: :delete, data: { confirm: 'You sure?'} %></li>
                         </ul>
                     </li>
                 <% else %>

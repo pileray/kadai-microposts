@@ -1,7 +1,11 @@
 <ul class="list-unstyled">
     <% microposts.each do |micropost| %>
         <li class="media mb-3">
-            <img class="mr-2 rounded" src="<%= gravatar_url(micropost.user, {size: 50}) %>" alt="">
+            <% if micropost.user.image? %>
+                <%= image_tag micropost.user.image.url, class: 'mr-2 rounded', size: 50 %>
+            <% else %>
+                <%= image_tag 'avatar.jpeg', class: 'rounded mr-2', size: 50 %>
+            <% end %>
             <div  class="media-body">
                 <div>
                     <%= link_to micropost.user.name, user_path(micropost.user) %> <span class="text-muted">posted at <%= micropost.created_at %></span>
@@ -13,7 +17,6 @@
                     <%= render 'favorites/like_button', micropost: micropost %>
                     <% if micropost.user == current_user %>
                         <%= render 'microposts/edit_micropost', micropost: micropost %>
-                        <%= link_to 'Delete', micropost, method: :delete, data: { confirm: 'You sure?'}, class: 'btn btn-sm btn-danger' %>
                     <% end %>
                 </div>
             </div>
