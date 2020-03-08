@@ -7,6 +7,8 @@
             </div>
             <% if current_user.image? %>
                 <p class="mt-2"><%= f.check_box :remove_image %>プロフィール画像の削除</p>
+            <% else %>
+                <%= f.hidden_field :remove_image, value: 0 %>
             <% end %>
             <%= f.submit 'プロフィール画像の変更', class: 'btn btn-info btn-sm mt-2' %>
         <% end %>

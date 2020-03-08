@@ -55,8 +55,13 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "プロフィール画像を変更しました。"
-      redirect_to @user
+      if user_params[:image] == nil
+        flash[:danger] = "画像を選択してください。"  
+        redirect_to @user
+      else
+        flash[:success] = "プロフィール画像を変更しました。"
+        redirect_to @user
+      end
     else
       flash.now[:danger] = "プロフィール画像の変更に失敗しました。"
       render :show
