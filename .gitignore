@@ -29,3 +29,5 @@
 /public/uploads/*
 
 /config/cloudinary.yml
+
+/config/initializers/carrierwave.rb

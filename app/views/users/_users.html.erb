@@ -3,7 +3,7 @@
         <% users.each do |user| %>
             <li class="media">
                 <% if user.image? %>
-                    <%= image_tag user.image.url, class: 'mr-2 rounded', size: 50 %>
+                    <%= image_tag user.image.to_s, class: 'mr-2 rounded', size: 50 %>
                 <% else %>
                     <%= image_tag 'avatar.jpeg', class: 'rounded mr-2', size: 50 %>
                 <% end %>

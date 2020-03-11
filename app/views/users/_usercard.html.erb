@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <% if user.image? %>
-            <%= image_tag user.image.url, class: 'rounded img-fluid', size: 500 %>
+            <%= image_tag user.image.to_s, class: 'rounded img-fluid', size: 500 %>
         <% else %>
             <%= image_tag 'avatar.jpeg', class: 'rounded img-fluid', size: 500 %>
         <% end %>

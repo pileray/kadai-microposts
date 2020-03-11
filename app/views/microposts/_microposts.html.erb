@@ -2,7 +2,7 @@
     <% microposts.each do |micropost| %>
         <li class="media mb-3">
             <% if micropost.user.image? %>
-                <%= image_tag micropost.user.image.url, class: 'mr-2 rounded', size: 50 %>
+                <%= image_tag micropost.user.image.to_s, class: 'mr-2 rounded', size: 50 %>
             <% else %>
                 <%= image_tag 'avatar.jpeg', class: 'rounded mr-2', size: 50 %>
             <% end %>
