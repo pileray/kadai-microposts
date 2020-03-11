@@ -1,0 +1,2 @@
+$('#feed-<%= current_user.id %>').html("<%=j render 'microposts/microposts', microposts: current_user.feed_microposts.order(id: :desc).page(params[:page]) %>");
+$('#flash_messages').html("<%=j render 'layouts/flash_messages' %>");

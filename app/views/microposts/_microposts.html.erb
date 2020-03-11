@@ -14,7 +14,9 @@
                     <p><%= micropost.content %></p>
                 </div>
                 <div>
-                    <%= render 'favorites/like_button', micropost: micropost %>
+                    <div id="favorite-<%= micropost.id %>" class="d-inline">
+                        <%= render 'favorites/like_button', micropost: micropost %>
+                    </div>
                     <% if micropost.user == current_user %>
                         <%= render 'microposts/edit_micropost', micropost: micropost %>
                     <% end %>

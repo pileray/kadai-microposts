@@ -1,0 +1,4 @@
+$('#favorite-<%= @micropost.id %>').html("<%=j render 'favorites/like_button', micropost: @micropost %>");
+$('#flash_messages').html("<%=j render 'layouts/flash_messages' %>");
+$('#usertabs-<%= current_user.id %>').html("<%=j render 'users/usertabs', user: current_user %>");
+$('#liketab-<%= current_user.id %>').html("<%=j render 'microposts/microposts', microposts: current_user.added_to_favorites.page(params[:page]).per(25) %>");

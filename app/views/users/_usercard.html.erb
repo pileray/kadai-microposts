@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><%= user.name %></h3>
+    </div>
+    <div class="card-body">
+        <% if user.image? %>
+            <%= image_tag user.image.url, class: 'rounded img-fluid', size: 500 %>
+        <% else %>
+            <%= image_tag 'avatar.jpeg', class: 'rounded img-fluid', size: 500 %>
+        <% end %>
+        <%= render 'users/image_form', user: user %>
+    </div>
+</div>

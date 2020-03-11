@@ -1,14 +1,14 @@
 <% if logged_in? %>
   <div class="row">
     <aside class="col-sm-4">
-      <%= form_with(model: @micropost, local: true) do |f| %>
+      <%= form_with(model: @micropost, remote: true) do |f| %>
         <div class="form-group">
           <%= f.text_area :content, class: 'form-control', rows: 5 %>
         </div>
         <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
       <% end %>
     </aside>
-    <div class="col-sm-8 mt-2">
+    <div class="col-sm-8 mt-2" id="feed-<%= current_user.id %>" >
       <%= render 'microposts/microposts', microposts: @microposts %>
     </div>
   </div>
